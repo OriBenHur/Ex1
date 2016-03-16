@@ -1,0 +1,8 @@
+This is a short Document about waze shortest path problem.
+in this project we will try to write a little piece of code to try and solved this issue the best we can.
+
+
+*we searched for a good enough open source that claim  to solve the problem.
+*after we found a code on www.geeksforgeeks.org, we downloaded it and tried to figure out what is the main idea behind it.
+when we understand that we are to dumb to figure it out we decided to trust the person who worth it and move on!
+just one thing we did manage to do is test it out and see that it's working pretty good.
