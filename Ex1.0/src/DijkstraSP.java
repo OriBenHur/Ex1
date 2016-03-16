@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 /******************************************************************************
  *  Compilation:  javac DijkstraSP.java
  *  Execution:    java DijkstraSP input.txt s
@@ -195,9 +193,9 @@ public class DijkstraSP {
      * Unit tests the <tt>DijkstraSP</tt> data type.
      */
     public static void main(String[] args) {
-        In in = new In(args[0]);
+        In in = new In("tinyEWG.txt");
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-        int s = Integer.parseInt(args[1]);
+        int s = Integer.parseInt("0");
 
         // compute shortest paths
         DijkstraSP sp = new DijkstraSP(G, s);
