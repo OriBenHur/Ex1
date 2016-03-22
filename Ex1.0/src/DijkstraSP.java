@@ -193,9 +193,9 @@ public class DijkstraSP {
      * Unit tests the <tt>DijkstraSP</tt> data type.
      */
     public static void main(String[] args) {
-        In in = new In("tinyEWG.txt");
+        In in = new In(args[0]);
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-        int s = Integer.parseInt("0");
+        int s = Integer.parseInt(args[1]);
 
         // compute shortest paths
         DijkstraSP sp = new DijkstraSP(G, s);
