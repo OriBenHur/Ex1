@@ -7,67 +7,11 @@ import java.util.Date;
 
 public class MyMain
 {
-	//	public static void main(String[] args)
-	//	{
-	//		try
-	//		{
-	//			main1(args);
-	//		}
-	//		catch (Exception e)
-	//		{
-	//			e.printStackTrace();
-	//		}
-	//	}
-
-	//	public static void main0(String[] args)
-	//	{
-	//		String f = "data/mediumEWD.txt";
-	//		String test = "data/test1.txt";
-	//		if ((args != null) && (args.length > 2))
-	//		{
-	//			f = args[0];
-	//			test = args[1];
-	//		}
-	//		String ans = test + "._ans.txt";
-	//
-	//		In in = new In(f);
-	//		EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-	//		int s = Integer.parseInt("1");
-	//
-	//		DijkstraSP sp = new DijkstraSP(G, s);
-	//		for (int t = 0; t < G.V(); t++) {
-	//			if ((t % 100 == 0) && 
-	//					(sp.hasPathTo(t)))
-	//			{
-	//				StdOut.printf("%d to %d (%.2f)  ", new Object[] { Integer.valueOf(s), Integer.valueOf(t), Double.valueOf(sp.distTo(t)) });
-	//				for (DirectedEdge e : sp.pathTo(t)) {
-	//					StdOut.print(e + "   ");
-	//				}
-	//				StdOut.println();
-	//			}
-	//		}
-	//		int[] invalid = { 44, 14, 128 };
-	//		G.setValidateVertex(invalid, false);
-	//		sp = new DijkstraSP(G, s);
-	//		for (int t = 0; t < G.V(); t++) {
-	//			if ((t % 100 == 0) && 
-	//					(sp.hasPathTo(t)))
-	//			{
-	//				StdOut.printf("%d to %d (%.2f)  ", new Object[] { Integer.valueOf(s), Integer.valueOf(t), Double.valueOf(sp.distTo(t)) });
-	//				for (DirectedEdge e : sp.pathTo(t)) {
-	//					StdOut.print(e + "   ");
-	//				}
-	//				StdOut.println();
-	//			}
-	//		}
-	//	}
-
-	public static void main(String[] args) throws Exception
+	public static void main(String[] args) //throws Exception
 	{
 		try
 		{
 			long start = new Date().getTime();
-
 			String time = new SimpleDateFormat("HH.mm.ss").format(start);
 			System.out.println("Start Testing...");
 			System.out.println("Loading graph file: " + args[0] + " runing a test " + args[1]);
@@ -95,7 +39,7 @@ public class MyMain
 				for (int i = 0; i < size_of_BL; i++) {
 					BL[i] = Integer.parseInt(sa[(i + 3)]);
 				}
-				double dist = sp(G, source, target, BL);
+				double dist = DijkstraSP.sp(G, source, target, BL);
 				os.println(s + " " + dist);
 				ll++;
 				s = is.readLine();
@@ -112,13 +56,5 @@ public class MyMain
 		}
 	}
 
-	public static double sp(EdgeWeightedDigraph G, int source, int target, int[] BL)
-	{
-		double ans = -1.0D;
-		G.setValidateVertex(BL, false);
-		DijkstraSP sp = new DijkstraSP(G, source);
-		ans = sp.distTo(target);
-		G.setValidateVertex(BL, true);
-		return ans;
-	}
+
 }

@@ -187,6 +187,16 @@ public class DijkstraSP {
         }
         return true;
     }
+    
+	public static double sp(EdgeWeightedDigraph G, int source, int target, int[] BL)
+	{
+		double ans = -1.0D;
+		G.setValidateVertex(BL, false);
+		DijkstraSP sp = new DijkstraSP(G, source);
+		ans = sp.distTo(target);
+		G.setValidateVertex(BL, true);
+		return ans;
+	}
 
 
     /**
@@ -210,7 +220,8 @@ public class DijkstraSP {
                 }
                 StdOut.println();
             }
-            else {
+            else 
+            {
                 StdOut.printf("%d to %d         no path\n", s, t);
             }
         }
