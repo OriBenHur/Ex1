@@ -30,6 +30,8 @@
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
+import java.util.Iterator;
+import java.util.Stack;
 public class EdgeWeightedDigraph {
     private static final String NEWLINE = System.getProperty("line.separator");
 
@@ -216,6 +218,34 @@ public class EdgeWeightedDigraph {
         }
         return list;
     } 
+    
+    public void validAll()
+    {
+      Iterable<DirectedEdge> ee = edges();
+      Iterator<DirectedEdge> i = ee.iterator();
+      while (i.hasNext())
+      {
+        DirectedEdge de = (DirectedEdge)i.next();
+        de.setValid(true);
+      }
+    }
+    public void setValidateVertex(int v, boolean value)
+    {
+      Iterable<DirectedEdge> ee = adj(v);
+      Iterator<DirectedEdge> i = ee.iterator();
+      while (i.hasNext())
+      {
+        DirectedEdge de = (DirectedEdge)i.next();
+        de.setValid(value);
+      }
+    }
+    
+    public void setValidateVertex(int[] vv, boolean value)
+    {
+      for (int i = 0; i < vv.length; i++) {
+        setValidateVertex(vv[i], value);
+      }
+    }
 
     /**
      * Returns a string representation of this edge-weighted digraph.

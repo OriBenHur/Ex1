@@ -21,66 +21,80 @@
  */
 
 public class DirectedEdge { 
-    private final int v;
-    private final int w;
-    private final double weight;
+	private final int v;
+	private final int w;
+	private final double weight;
+	private boolean valid = true;
 
-    /**
-     * Initializes a directed edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
-     * the given <tt>weight</tt>.
-     * @param v the tail vertex
-     * @param w the head vertex
-     * @param weight the weight of the directed edge
-     * @throws IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt>
-     *    is a negative integer
-     * @throws IllegalArgumentException if <tt>weight</tt> is <tt>NaN</tt>
-     */
-    public DirectedEdge(int v, int w, double weight) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
-        if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
-        this.v = v;
-        this.w = w;
-        this.weight = weight;
-    }
+	/**
+	 * Initializes a directed edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
+	 * the given <tt>weight</tt>.
+	 * @param v the tail vertex
+	 * @param w the head vertex
+	 * @param weight the weight of the directed edge
+	 * @throws IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt>
+	 *    is a negative integer
+	 * @throws IllegalArgumentException if <tt>weight</tt> is <tt>NaN</tt>
+	 */
+	public DirectedEdge(int v, int w, double weight) {
+		if (v < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
+		if (w < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
+		if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
+		this.v = v;
+		this.w = w;
+		this.weight = weight;
+	}
 
-    /**
-     * Returns the tail vertex of the directed edge.
-     * @return the tail vertex of the directed edge
-     */
-    public int from() {
-        return v;
-    }
+	/**
+	 * Returns the tail vertex of the directed edge.
+	 * @return the tail vertex of the directed edge
+	 */
+	public int from() {
+		return v;
+	}
 
-    /**
-     * Returns the head vertex of the directed edge.
-     * @return the head vertex of the directed edge
-     */
-    public int to() {
-        return w;
-    }
+	/**
+	 * Returns the head vertex of the directed edge.
+	 * @return the head vertex of the directed edge
+	 */
+	public int to() {
+		return w;
+	}
 
-    /**
-     * Returns the weight of the directed edge.
-     * @return the weight of the directed edge
-     */
-    public double weight() {
-        return weight;
-    }
+	/**
+	 * Returns the weight of the directed edge.
+	 * @return the weight of the directed edge
+	 */
+	public double weight() {
+		if (isValid())
+		{
+			return weight;
+		}
+		return Double.POSITIVE_INFINITY;
+	}
 
-    /**
-     * Returns a string representation of the directed edge.
-     * @return a string representation of the directed edge
-     */
-    public String toString() {
-        return v + "->" + w + " " + String.format("%5.2f", weight);
-    }
+	/**
+	 * Returns a string representation of the directed edge.
+	 * @return a string representation of the directed edge
+	 */
+	public String toString() {
+		return v + "->" + w + " " + String.format("%5.2f", weight);
+	}
 
-    /**
-     * Unit tests the <tt>DirectedEdge</tt> data type.
-     */
-    public static void main(String[] args) {
-        DirectedEdge e = new DirectedEdge(12, 34, 5.67);
-        StdOut.println(e);
-    }
+	public boolean isValid()
+	{
+		return this.valid;
+	}
+	public void setValid(boolean valid)
+	{
+		this.valid = valid;
+	}
+
+	/**
+	 * Unit tests the <tt>DirectedEdge</tt> data type.
+	 */
+	public static void main(String[] args) {
+		DirectedEdge e = new DirectedEdge(12, 34, 5.67);
+		StdOut.println(e);
+	}
 }
