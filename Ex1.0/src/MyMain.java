@@ -21,12 +21,12 @@ public class MyMain
 			PrintWriter os = new PrintWriter(fw);
 			In in = new In(args[0]);
 			EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-			long s1 = new Date().getTime();
-			System.out.println("Done loading Graph: " + args[0] + "  in " + (s1 - start) + "  ms");
+			long t1 = new Date().getTime();
+			System.out.println("Done loading Graph: " + args[0] + "  in " + (t1 - start) + "  ms");
 			FileReader fr = new FileReader(args[1]);
-			BufferedReader is = new BufferedReader(fr);
-			String num_of_lines = is.readLine();
-			String s = is.readLine();
+			BufferedReader br = new BufferedReader(fr);
+			String num_of_lines = br.readLine();
+			String s = br.readLine();
 			int ll = 0;
 			os.println(num_of_lines + " Results:");
 			while ((s != null) && (ll < 20))
@@ -36,19 +36,20 @@ public class MyMain
 				int target = Integer.parseInt(sa[1]);
 				int size_of_BL = Integer.parseInt(sa[2]);
 				int[] BL = new int[size_of_BL];
-				for (int i = 0; i < size_of_BL; i++) {
+				for (int i = 0; i < size_of_BL; i++) 
+				{
 					BL[i] = Integer.parseInt(sa[(i + 3)]);
 				}
 				double dist = DijkstraSP.sp(G, source, target, BL);
 				os.println(s + " " + dist);
 				ll++;
-				s = is.readLine();
+				s = br.readLine();
 			}
-			long s2 = new Date().getTime();
-			System.out.println("Done computing shortest paths on Graph: " + args[0] + "  in " + (s2 - s1) + "  ms");
-			System.out.println("Total time: " + (s2 - start) + "  ms");
+			long t2 = new Date().getTime();
+			System.out.println("Done computing shortest paths on Graph: " + args[0] + "  in " + (t2 - t1) + "  ms");
+			System.out.println("Total time: " + (t2 - start) + "  ms");
 			os.close();
-			is.close();
+			br.close();
 		}
 		catch (Exception e)
 		{
