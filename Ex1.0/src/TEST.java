@@ -1,33 +1,50 @@
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-
-
-
-
-import static org.junit.Assert.*;
-
 import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-
+import java.util.Vector;
 import org.junit.Test;
 
 
 public class TEST {
+	
+	public static Vector<String> Name(String Path)
+	{
+		File folder = new File(Path);
+		File[] listOfFiles = folder.listFiles();
+		Vector<String> Name = new Vector<>();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].isFile()) {
+				Name.add(listOfFiles[i].getName());
+			}
+		}
+		return Name;
+	}
 	@Test
-
 	public void test_tiny_1(){
 
-		String s1 = "Boaz-Solution_test1.txt_tinyEWD.txt";
-		String s2 = "My-Solution_test1.txt_tinyEWD.txt";
+		String t = "test1.txt";
+		String p = "tinyEWD.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
 
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
 
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
 			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
 			{
 				assertEquals(my, other);
@@ -38,76 +55,31 @@ public class TEST {
 
 
 	@Test
-	public void test_medium_1(){
+	public void test_tiny_2(){
 
-		String s1 = "Boaz-Solution_test1.txt_mediumEWD.txt";
-		String s2 = "My-Solution_test1.txt_mediumEWD.txt";
-
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
-
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
-			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+		String t = "test1.txt";
+		String p = "tinyEWG.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_"))
 			{
-				assertEquals(my, other);
-
+				Boazsel = name;
+				break;
 			}
 		}
-	}
 
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
 
-	@Test
-	public void test_medium_2(){
-
-		String s1 = "Boaz-Solution_test2.txt_mediumEWD.txt";
-		String s2 = "My-Solution_test2.txt_mediumEWD.txt";
-		
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
-
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
-			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
-			{
-				assertEquals(my, other);
-
-			}
-		}
-	}
-	@Test
-	public void test_medium_3(){
-
-		String s1 = "Boaz-Solution_test3.txt_mediumEWD.txt";
-		String s2 = "My-Solution_test3.txt_mediumEWD.txt";
-		
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
-
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
-			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
-			{
-				assertEquals(my, other);
-
-			}
-		}
-	}
-	
-	public void test_medium_4(){
-
-		String s1 = "Boaz-Solution_test4.txt_mediumEWD.txt";
-		String s2 = "My-Solution_test4.txt_mediumEWD.txt";
-		
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
-
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
 			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
 			{
 				assertEquals(my, other);
@@ -117,18 +89,32 @@ public class TEST {
 	}
 	
 	@Test
-	public void test_large_3(){
+	public void test_mid_1(){
 
-		String s1 = "Boaz-Solution_test3.txt_largeEWD.txt";
-		String s2 = "My-Solution_test3.txt_largeEWD.txt";
+		String t = "test1.txt";
+		String p = "mediumEWD.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
 
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
 
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
-			if(!my.contains("results") && !other.contains("SE1_EX1 solution"))
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
 			{
 				assertEquals(my, other);
 
@@ -137,22 +123,207 @@ public class TEST {
 	}
 	
 	@Test
-	public void test_large_4(){
+	public void test_mid_2(){
 
-		String s1 = "Boaz-Solution_test4.txt_largeEWD.txt";
-		String s2 = "My-Solution_test4.txt_largeEWD.txt";
+		String t = "test1.txt";
+		String p = "mediumEWG.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_"))
+			{
+				Boazsel = name;
+				break;
+			}
+		}
 
-		In Check_File = new In(s1);
-		In Ans = new In(s2);
-		
-		while((Ans.hasNextLine()) && (Check_File.hasNextLine())){
-			String my = Ans.readLine();
-			String other = Check_File.readLine();
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
 			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
 			{
 				assertEquals(my, other);
+
 			}
 		}
 	}
+	
+	
+	@Test
+	public void test_mid_3(){
 
+		String t = "test2.txt";
+		String p = "mediumEWD.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
+
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+			{
+				assertEquals(my, other);
+
+			}
+		}
+	}
+	
+	@Test
+	public void test_mid_4(){
+
+		String t = "test2.txt";
+		String p = "mediumEWG.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
+
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+			{
+				assertEquals(my, other);
+
+			}
+		}
+	}
+	
+	@Test
+	public void test_mid_5(){
+
+		String t = "test3.txt";
+		String p = "mediumEWD.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
+
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+			{
+				assertEquals(my, other);
+
+			}
+		}
+	}
+	
+	@Test
+	public void test_mid_6(){
+
+		String t = "test3.txt";
+		String p = "mediumEWG.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
+
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+			{
+				assertEquals(my, other);
+
+			}
+		}
+	}
+	
+	@Test
+	public void test_larg_1(){
+
+		String t = "test3.txt";
+		String p = "largeEWD.txt";
+		String[] Tests = {p,t};
+		Helper.run(p,t);
+		Main_Ex1.main(Tests);
+		String Boazsel="";
+		String Mysel = "Solutions/Solution_"+t+"_"+p+".txt";
+		Vector<String> tmp = Name("./");
+		for(String name : tmp)
+		{
+			if(name.contains("Solution_"+t+"_"+p+"_")) 
+			{
+				Boazsel = name;
+				break;
+			}
+		}
+
+		In MySel = new In(Mysel);
+		In Boaz = new In(Boazsel);
+
+		while((Boaz.hasNextLine()) && (MySel.hasNextLine())){
+			String other = Boaz.readLine();
+			String my = MySel.readLine();
+			if(!my.contains("Results") && !other.contains("SE1_EX1 solution"))
+			{
+				assertEquals(my, other);
+
+			}
+		}
+	}
 }
